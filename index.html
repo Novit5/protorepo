@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Activity Monitoring System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Activity Monitoring</h1>
+
+<form id="form">
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="text" id="activity" placeholder="Activity" required>
+  
+  <select id="status">
+    <option>Pending</option>
+    <option>Ongoing</option>
+    <option>Completed</option>
+  </select>
+
+  <button type="submit">Add Activity</button>
+</form>
+
+<h2>Activity List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Activity</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="table-body"></tbody>
+</table>
+
+<script src="app.js"></script>
+</body>
+</html>
