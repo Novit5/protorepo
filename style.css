@@ -183,6 +183,69 @@ body {
   margin: 0 0 14px;
 }
 
+.user-edit-panel {
+  margin-bottom: 18px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.user-edit-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.user-edit-form label {
+  align-self: end;
+  color: #4b5565;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.user-edit-form input,
+.user-edit-form select {
+  grid-column: span 1;
+}
+
+.user-edit-form input[readonly] {
+  color: var(--muted);
+  background: #eef2f7;
+}
+
+.form-actions {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 10px;
+}
+
+.button-secondary {
+  color: var(--text);
+  background: #ffffff;
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.button-secondary:hover {
+  color: var(--text);
+  background: #f8fafc;
+  box-shadow: none;
+}
+
+.button-danger {
+  background: #dc2626;
+  border-color: #dc2626;
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.18);
+}
+
+.button-danger:hover {
+  background: #b91c1c;
+  box-shadow: 0 12px 24px rgba(220, 38, 38, 0.24);
+}
+
 .table-scroll {
   overflow-x: auto;
 }
@@ -456,6 +519,14 @@ tbody tr:last-child td {
   form {
     grid-template-columns: 1fr;
     padding: 16px;
+  }
+
+  .user-edit-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
   }
 
   table {

@@ -13,6 +13,39 @@
 
   <p class="form-message info" id="user-list-message" aria-live="polite">Loading users...</p>
 
+  <section class="table-panel user-edit-panel is-hidden" id="user-edit-panel" aria-labelledby="user-edit-title">
+    <h2 id="user-edit-title">Edit User</h2>
+    <form class="user-edit-form" id="user-edit-form">
+      <input type="hidden" id="edit-user-id">
+
+      <label for="edit-fullname">Fullname</label>
+      <input type="text" id="edit-fullname" required>
+
+      <label for="edit-email">Email</label>
+      <input type="email" id="edit-email" readonly>
+
+      <label for="edit-password">Password</label>
+      <input type="password" id="edit-password" placeholder="Leave blank to keep current password">
+
+      <label for="edit-user-role">User Role</label>
+      <select id="edit-user-role" required>
+        <option value="1">Admin</option>
+        <option value="2">Program Manager</option>
+      </select>
+
+      <label for="edit-user-stat">Status</label>
+      <select id="edit-user-stat" required>
+        <option value="1">Active</option>
+        <option value="2">Inactive</option>
+      </select>
+
+      <div class="form-actions">
+        <button type="submit">Save Changes</button>
+        <button type="button" class="button-secondary" id="cancel-edit-button">Cancel</button>
+      </div>
+    </form>
+  </section>
+
   <section class="table-panel" aria-labelledby="user-list-title">
     <h2 id="user-list-title">Registered Users</h2>
     <div class="table-scroll">

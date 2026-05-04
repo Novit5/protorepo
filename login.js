@@ -26,7 +26,7 @@ loginForm.addEventListener("submit", async (event) => {
   const passwordHash = await hashPassword(password);
   const { data: userRecord, error: userLookupError } = await supabaseClient
     .from("tbl_user")
-    .select("user_id, email, user_role")
+    .select("user_id, email, user_role, user_stat")
     .eq("email", email)
     .eq("password", passwordHash)
     .maybeSingle();
@@ -41,16 +41,12 @@ loginForm.addEventListener("submit", async (event) => {
     return;
   }
 
-  const { error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if (error) {
-    setLoginMessage(`${error.message}. Please verify your email before logging in.`, "error");
+  if (Number(userRecord.user_stat) === 2) {
+    setLoginMessage("This user account is inactive.", "error");
     return;
   }
 
+  localStorage.setItem("user_id", String(userRecord.user_id));
   localStorage.setItem("user_role", String(userRecord.user_role));
   localStorage.setItem("user_email", userRecord.email);
 
