@@ -2,7 +2,7 @@ const activityListBody = document.getElementById("activity-list-body");
 const activityListMessage = document.getElementById("activity-list-message");
 
 const activityColumns = [
-  "tiltle",
+  "title",
   "manager",
   "program",
   "start",
