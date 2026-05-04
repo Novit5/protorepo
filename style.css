@@ -160,6 +160,41 @@ body {
   margin-right: auto;
 }
 
+.activity-list-content > h1,
+.activity-list-content > .form-message,
+.activity-list-content > .table-panel {
+  width: min(100%, 1600px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-panel {
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.table-panel h2 {
+  margin: 0 0 14px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.activity-data-table {
+  min-width: 2200px;
+  box-shadow: none;
+}
+
+.activity-data-table th,
+.activity-data-table td {
+  vertical-align: top;
+  white-space: normal;
+}
+
 .sidebar {
   position: fixed;
   inset: 0 auto 0 0;

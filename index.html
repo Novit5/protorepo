@@ -44,7 +44,12 @@
   fetch(sidebarFile)
     .then(response => response.text())
     .then(html => {
-      document.getElementById("sidebar-container").innerHTML = html;
+      const sidebarContainer = document.getElementById("sidebar-container");
+      sidebarContainer.innerHTML = html;
+
+      sidebarContainer.querySelectorAll(".sidebar-nav a").forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "index.html");
+      });
     });
 </script>
 <script src="app.js"></script>
