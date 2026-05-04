@@ -27,6 +27,94 @@ body {
     linear-gradient(135deg, #f8fafc 0%, var(--bg) 100%);
 }
 
+.login-page {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-shell {
+  width: min(100%, 430px);
+}
+
+.login-panel {
+  padding: 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.login-panel h1 {
+  margin: 0 0 8px;
+  text-align: left;
+  font-size: 2rem;
+}
+
+.login-subtitle {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.login-form label {
+  color: #4b5565;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0 8px;
+  font-size: 0.9rem;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.remember-option input {
+  width: 16px;
+  min-height: 16px;
+  padding: 0;
+}
+
+.login-options a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-options a:hover {
+  text-decoration: underline;
+}
+
 .main-content > h1,
 .main-content > h2,
 .main-content > form,
@@ -276,5 +364,18 @@ tbody tr:last-child td {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-panel {
+    padding: 24px 18px;
+  }
+
+  .login-options {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
