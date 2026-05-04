@@ -82,7 +82,7 @@ forgotPasswordLink.addEventListener("click", async (event) => {
     return;
   }
 
-  const redirectUrl = new URL("reset-password.html", window.location.href).href;
+  const redirectUrl = "https://resonant-kataifi-1a27b6.netlify.app/reset-password";
   const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
     redirectTo: redirectUrl
   });
