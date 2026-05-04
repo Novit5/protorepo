@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of User - Activity Monitoring System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebar-container"></div>
+
+<main class="main-content user-list-content">
+  <h1>List of User</h1>
+
+  <p class="form-message info" id="user-list-message" aria-live="polite">Loading users...</p>
+
+  <section class="table-panel" aria-labelledby="user-list-title">
+    <h2 id="user-list-title">Registered Users</h2>
+    <div class="table-scroll">
+      <table class="user-data-table">
+        <thead>
+          <tr>
+            <th>Fullname</th>
+            <th>Email</th>
+            <th>User Role</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="user-list-body"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+  const userRole = localStorage.getItem("user_role");
+  const sidebarFile = userRole === "2" ? "sidebar-user.html" : "sidebar.html";
+
+  fetch(sidebarFile)
+    .then(response => response.text())
+    .then(html => {
+      const sidebarContainer = document.getElementById("sidebar-container");
+      sidebarContainer.innerHTML = html;
+
+      sidebarContainer.querySelectorAll(".sidebar-nav a").forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "user-list.html");
+      });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="user-list.js"></script>
+</body>
+</html>

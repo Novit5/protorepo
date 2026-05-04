@@ -162,7 +162,10 @@ body {
 
 .activity-list-content > h1,
 .activity-list-content > .form-message,
-.activity-list-content > .table-panel {
+.activity-list-content > .table-panel,
+.user-list-content > h1,
+.user-list-content > .form-message,
+.user-list-content > .table-panel {
   width: min(100%, 1600px);
   margin-left: auto;
   margin-right: auto;
@@ -193,6 +196,30 @@ body {
 .activity-data-table td {
   vertical-align: top;
   white-space: normal;
+}
+
+.user-data-table {
+  width: 100%;
+  min-width: 760px;
+  box-shadow: none;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.table-actions button {
+  width: auto;
+  min-height: 36px;
+  padding: 8px 12px;
+  box-shadow: none;
+}
+
+.table-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
 }
 
 .sidebar {
