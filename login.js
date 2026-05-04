@@ -1,5 +1,6 @@
 const loginForm = document.getElementById("login-form");
 const loginMessage = document.getElementById("login-message");
+const forgotPasswordLink = document.getElementById("forgot-password-link");
 
 async function hashPassword(password) {
   const encoded = new TextEncoder().encode(password);
@@ -36,7 +37,7 @@ loginForm.addEventListener("submit", async (event) => {
   }
 
   if (!userRecord) {
-    setLoginMessage("Email or password was not found in tbl_user.", "error");
+    setLoginMessage("Email or password was not found in database.", "error");
     return;
   }
 
@@ -51,4 +52,45 @@ loginForm.addEventListener("submit", async (event) => {
   }
 
   window.location.href = "index.html";
+});
+
+forgotPasswordLink.addEventListener("click", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+
+  if (!email) {
+    setLoginMessage("Enter your email first, then click Forgot password.", "error");
+    return;
+  }
+
+  setLoginMessage("Checking your account...", "info");
+
+  const { data: userRecord, error: userLookupError } = await supabaseClient
+    .from("tbl_user")
+    .select("user_id, email")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (userLookupError) {
+    setLoginMessage(`Unable to check tbl_user: ${userLookupError.message}`, "error");
+    return;
+  }
+
+  if (!userRecord) {
+    setLoginMessage("This email was not found in tbl_user.", "error");
+    return;
+  }
+
+  const redirectUrl = new URL("reset-password.html", window.location.href).href;
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+    redirectTo: redirectUrl
+  });
+
+  if (error) {
+    setLoginMessage(error.message, "error");
+    return;
+  }
+
+  setLoginMessage("Password reset email sent. Check your inbox.", "success");
 });
