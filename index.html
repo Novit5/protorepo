@@ -6,6 +6,9 @@
 </head>
 <body>
 
+<div id="sidebar-container"></div>
+
+<main class="main-content">
 <h1>Monitoring Prototype</h1>
 
 <form id="form">
@@ -21,7 +24,7 @@
   <button type="submit">Add Activity</button>
 </form>
 
-<h2>Activity List</h2>
+<h2 id="activity-list">Activity List</h2>
 <table>
   <thead>
     <tr>
@@ -32,7 +35,15 @@
   </thead>
   <tbody id="table-body"></tbody>
 </table>
+</main>
 
+<script>
+  fetch("sidebar.html")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("sidebar-container").innerHTML = html;
+    });
+</script>
 <script src="app.js"></script>
 </body>
 </html>
