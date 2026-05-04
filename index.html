@@ -38,7 +38,10 @@
 </main>
 
 <script>
-  fetch("sidebar.html")
+  const userRole = localStorage.getItem("user_role");
+  const sidebarFile = userRole === "2" ? "sidebar-user.html" : "sidebar.html";
+
+  fetch(sidebarFile)
     .then(response => response.text())
     .then(html => {
       document.getElementById("sidebar-container").innerHTML = html;

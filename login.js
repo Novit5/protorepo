@@ -26,7 +26,7 @@ loginForm.addEventListener("submit", async (event) => {
   const passwordHash = await hashPassword(password);
   const { data: userRecord, error: userLookupError } = await supabaseClient
     .from("tbl_user")
-    .select("user_id, email")
+    .select("user_id, email, user_role")
     .eq("email", email)
     .eq("password", passwordHash)
     .maybeSingle();
@@ -50,6 +50,9 @@ loginForm.addEventListener("submit", async (event) => {
     setLoginMessage(`${error.message}. Please verify your email before logging in.`, "error");
     return;
   }
+
+  localStorage.setItem("user_role", String(userRecord.user_role));
+  localStorage.setItem("user_email", userRecord.email);
 
   window.location.href = "index.html";
 });
